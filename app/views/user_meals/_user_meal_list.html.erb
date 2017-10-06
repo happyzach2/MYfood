@@ -1,0 +1,14 @@
+<h3>My Meals</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+  </tr>
+    <% @my_meals.each do |user_meal| %>
+      <tr>
+        <td><%= user_meal.meal.name %></td>
+        <td><%= user_meal.meal.description %></td>
+        <td><%= user_meal.selected %></td>
+      </tr>
+    <% end %>
+</table>
