@@ -1,0 +1,27 @@
+<%= form_with(model: meal_plan, local: true) do |form| %>
+  <% if meal_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(meal_plan.errors.count, "error") %> prohibited this meal_plan from being saved:</h2>
+
+      <ul>
+      <% meal_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :budget %>
+    <%= form.text_field :budget, id: :meal_plan_budget %>
+  </div>
+
+  <div class="field">
+    <%= form.label :week_day_id %>
+    <%= form.text_field :week_day_id, id: :meal_plan_week_day_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
