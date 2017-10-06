@@ -3,5 +3,6 @@
 <div class="">
     <%= link_to "add meal", new_meal_path %>
     <%= link_to "search meals", meals_path %>
+    <%= link_to "meal plans", meal_plans_path %>
 </div>
 <%= render 'user_meals/user_meal_list', locals: {meals: @my_meals}%>

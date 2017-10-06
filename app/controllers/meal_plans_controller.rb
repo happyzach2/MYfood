@@ -69,6 +69,6 @@ class MealPlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_plan_params
-      params.require(:meal_plan).permit(:budget, :week_day_id)
+      params.require(:meal_plan).permit(:budget, :week_day_id, :user_id)
     end
 end
