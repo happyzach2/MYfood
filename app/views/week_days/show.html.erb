@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @week_day.date %>
+</p>
+
+<p>
+  <strong>Meal:</strong>
+  <%= @week_day.meal %>
+</p>
+
+<p>
+  <strong>Eaten:</strong>
+  <%= @week_day.eaten %>
+</p>
+
+<%= link_to 'Edit', edit_week_day_path(@week_day) %> |
+<%= link_to 'Back', week_days_path %>
