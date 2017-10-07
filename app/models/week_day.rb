@@ -1,3 +1,4 @@
 class WeekDay < ApplicationRecord
-  belongs_to :meal
+  has_one :meal
+  belongs_to :meal_plan
 end
