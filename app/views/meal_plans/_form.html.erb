@@ -17,8 +17,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :week_day_id %>
-    <%= form.text_field :week_day_id, id: :meal_plan_week_day_id %>
+    <%= form.label :number_of_weeks %>
+    <%= form.number_field :number_of_weeks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_select :start_date %>
   </div>
 
   <div class="actions">

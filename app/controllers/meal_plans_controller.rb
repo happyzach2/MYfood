@@ -28,6 +28,7 @@ class MealPlansController < ApplicationController
 
     respond_to do |format|
       if @meal_plan.save
+        week_day_creation(@meal_plan)
         format.html { redirect_to @meal_plan, notice: 'Meal plan was successfully created.' }
         format.json { render :show, status: :created, location: @meal_plan }
       else
@@ -69,6 +70,15 @@ class MealPlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_plan_params
-      params.require(:meal_plan).permit(:budget, :week_day_id, :user_id)
+      params.require(:meal_plan).permit(:budget, :week_day_id, :user_id, :number_of_weeks, :start_date)
+    end
+
+    def week_day_creation(meal_plan)
+      total_days = meal_plan.number_of_weeks * 7
+      date_holder = meal_plan.start_date
+      total_days.times do
+        WeekDay.create!(date: date_holder , eaten: false, meal_plan_id: meal_plan.id)
+        date_holder = date_holder + 1
+      end
     end
 end

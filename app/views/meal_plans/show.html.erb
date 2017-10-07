@@ -6,8 +6,10 @@
 </p>
 
 <p>
-  <strong>Week day:</strong>
-  <%= @meal_plan.week_day %>
+  <strong>Week day:</strong><br>
+  <% @meal_plan.week_days.each do |wd| %>
+    <%= link_to wd.date, week_day_path(wd) %><br>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_meal_plan_path(@meal_plan) %> |
