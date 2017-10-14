@@ -6,8 +6,10 @@
 </p>
 
 <p>
-  <strong>Meal:</strong>
-  <% @week_day.meals %>
+  <strong>Meals:</strong><br>
+  <% @week_day.meals.each do |meal| %>
+    <%= meal.name %><br>
+  <% end %>
   <%= link_to 'add meal', user_meals_path(week_day_id: @week_day), remote: true %>
 </p>
 
