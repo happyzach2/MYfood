@@ -10,7 +10,6 @@ class WeekDaysController < ApplicationController
   # GET /week_days/1
   # GET /week_days/1.json
   def show
-    @my_meals = current_user.user_meals.all
   end
 
   # GET /week_days/new
