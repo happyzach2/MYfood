@@ -10,11 +10,16 @@
   <%= @meal.description %>
 </p>
 
+<p>
+  <strong>Ingredients:</strong>
+  
+</p>
+
 <%= link_to 'Edit', edit_meal_path(@meal) %> |
 <%= link_to 'Back', meals_path %> |
 
 <%= current_user.user_meals.find_by(meal_id: @meal.id).presence ?
 "already in your list" :
- link_to('Add to my list', user_meals_path(meal_id: @meal, 
+ link_to('Add to my list', user_meals_path(meal_id: @meal,
                                            user_id: current_user),
                                            method: "post")%>

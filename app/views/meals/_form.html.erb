@@ -1,4 +1,4 @@
-<%= form_with(model: meal, local: true) do |form| %>
+<%= form_for @meal do |f| %>
   <% if meal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(meal.errors.count, "error") %> prohibited this meal from being saved:</h2>
@@ -12,20 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :meal_name %>
+    <%= f.label :name %>
+    <%= f.text_field :name, id: :meal_name %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :meal_description %>
+    <%= f.label :description %>
+    <%= f.text_field :description, id: :meal_description %>
   </div>
 
   <div class="field">
-    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <h3>ingredients</h3>
+  <div id="ingredients">
+    <%= f.fields_for :ingredients do |ing| %>
+    <%= render 'ingredient_fields', f: ing %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add ingredient', f, :ingredients %>
+    </div>
   </div>
+
+    <%= f.submit %>
 <% end %>
