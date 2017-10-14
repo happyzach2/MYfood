@@ -4,4 +4,5 @@
     <%= link_to "add meal", meals_path %>
     <%= link_to "meal plans", meal_plans_path %>
 </div>
+<%= render 'meal_plans/daily_meal_plan', locals: {meal_plan: @my_meal_plan} %>
 <%= render 'user_meals/user_meal_list', locals: {meals: @my_meals}%>
