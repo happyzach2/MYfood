@@ -14,4 +14,5 @@
 //= require jquery-ui
 //= require cocoon
 //= require turbolinks
+//= require bootstrap.min.js
 //= require_tree .

@@ -11,8 +11,18 @@
 </p>
 
 <p>
-  <strong>Ingredients:</strong>
-  
+  <strong>Ingredients:</strong><br>
+  <% @meal.ingredients.each do |ing| %>
+  <div class="alert alert-info">
+    <div class="pull-left">
+      <%= ing.name %>
+    </div>
+    <div class="pull-right">
+      <%= ing.description %>
+    </div>
+    <br>
+  </div>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_meal_path(@meal) %> |
