@@ -8,7 +8,7 @@
 <p>
   <strong>Meals:</strong><br>
   <% @week_day.meals.each do |meal| %>
-    <%= meal.name %><br>
+    <%= meal.name %> | <%= link_to "remove", week_day_meal_path(week_day_meal_id: meal.week_day_meals.find_by(meal_id: meal).id) , method: :delete, data: { confirm: 'Are you sure?' } %> <br>
   <% end %>
   <%= link_to 'add meal', user_meals_path(week_day_id: @week_day), remote: true %>
 </p>
