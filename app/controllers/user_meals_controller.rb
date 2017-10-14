@@ -5,6 +5,7 @@ class UserMealsController < ApplicationController
   # GET /user_meals.json
   def index
     @user_meals = UserMeal.all
+    @my_meals = current_user.user_meals.all
   end
 
   # GET /user_meals/1

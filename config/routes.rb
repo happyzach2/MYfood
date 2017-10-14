@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :meals
   resources :user_meals
+  resources :week_day_meals
   devise_for :users
   root to: "pages#index"
   get 'pages/index'

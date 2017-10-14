@@ -8,6 +8,7 @@
 <p>
   <strong>Meal:</strong>
   <% @week_day.meals %>
+  <%= link_to 'add meal', user_meals_path, remote: true %>
 </p>
 
 <p>
@@ -17,3 +18,7 @@
 
 <%= link_to 'Edit', edit_week_day_path(@week_day) %> |
 <%= link_to 'Back', week_days_path %>
+
+<div class="page-loader">
+
+</div>
