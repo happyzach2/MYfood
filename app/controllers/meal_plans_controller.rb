@@ -4,7 +4,7 @@ class MealPlansController < ApplicationController
   # GET /meal_plans
   # GET /meal_plans.json
   def index
-    @meal_plans = MealPlan.all
+    @meal_plans = current_user.meal_plans
   end
 
   # GET /meal_plans/1
@@ -74,7 +74,7 @@ class MealPlansController < ApplicationController
     end
 
     def week_day_creation(meal_plan)
-      total_days = meal_plan.number_of_weeks * 7
+      total_days = meal_plan.number_of_weeks
       date_holder = meal_plan.start_date
       total_days.times do
         WeekDay.create!(date: date_holder , eaten: false, meal_plan_id: meal_plan.id)
