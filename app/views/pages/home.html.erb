@@ -4,5 +4,21 @@
     <%= link_to "add meal", meals_path %>
     <%= link_to "meal plans", meal_plans_path %>
 </div>
-<%= render 'meal_plans/daily_meal_plan', locals: {meal_plan: @my_meal_plan} %>
+<hr>
+<br><br>
+<h3>My Meal Plan</h3>
+<%= link_to "daily" , pages_home_path(daily_view: true) %> |
+<%= link_to "weekly" , pages_home_path(weekly_view: true) %>
+<br>
+<% if @recent_meal_plan.present? %>
+  <% if params[:daily_view].present? %>
+    <%= render 'meal_plans/daily_meal_plan', locals: {meal_plan: @recent_meal_plan} %>
+  <% elsif params[:weekly_view].present? %>
+    <%= render 'meal_plans/weekly_meal_plan', locals: {meal_plan: @recent_meal_plan} %>
+  <% end %>
+<% else %>
+  <%= link_to 'start a meal plan', new_meal_plan_path %>
+<% end %>
+<hr>
+<br><br>
 <%= render 'user_meals/user_meal_list', locals: {meals: @my_meals}%>

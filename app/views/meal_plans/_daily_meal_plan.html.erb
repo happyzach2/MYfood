@@ -1,0 +1,5 @@
+daily view <br>
+<%= will_paginate @week_days %><br>
+<% @week_days.each do |week_day| %>
+  <%= week_day.date %>
+<% end %>
