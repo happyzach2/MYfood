@@ -1,0 +1,9 @@
+daily view <br>
+<%= will_paginate @week_days %><br>
+<% @week_days.each do |week_day| %>
+  <strong>Date:</strong> <%= week_day.date %><br>
+  <strong><u>Meals</u></strong> <br>
+  <% week_day.meals.each do |meal| %>
+    <%= meal.name %><br>
+  <% end %>
+<% end %>

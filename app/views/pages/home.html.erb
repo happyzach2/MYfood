@@ -12,9 +12,9 @@
 <br>
 <% if @recent_meal_plan.present? %>
   <% if params[:daily_view].present? %>
-    <%= render 'meal_plans/daily_meal_plan', locals: {meal_plan: @recent_meal_plan} %>
+    <%= render 'meal_plans/my_meal_plan', locals: {meal_plan: @week_days} %>
   <% elsif params[:weekly_view].present? %>
-    <%= render 'meal_plans/weekly_meal_plan', locals: {meal_plan: @recent_meal_plan} %>
+    <%= render 'meal_plans/my_meal_plan', locals: {meal_plan: @week_days} %>
   <% end %>
 <% else %>
   <%= link_to 'start a meal plan', new_meal_plan_path %>

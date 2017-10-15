@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     if params[:daily_view].present?
       @week_days = @recent_meal_plan.week_days.paginate(:page => params[:page], :per_page => 1)
     elsif params[:weekly_view].present?
-      @recent_meal_plan = current_user.meal_plans.last
+      @week_days = @recent_meal_plan.week_days.paginate(:page => params[:page], :per_page => 7)
     else
       @recent_meal_plan = current_user.meal_plans.last
     end
