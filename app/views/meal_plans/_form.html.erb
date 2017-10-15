@@ -17,6 +17,10 @@
   </div>
 
   <div class="field">
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="field">
     <%= form.label :number_of_weeks %>
     <%= form.number_field :number_of_weeks %>
   </div>
