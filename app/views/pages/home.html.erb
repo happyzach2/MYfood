@@ -1,24 +1,40 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="text-center">
+  <h1>
+    <% if @selected_meal_plan.previous.present? %>
+      <%= link_to "<<", pages_home_path(prev: true) %>
+    <% end %>
+    Meal Plan
+    <% if @selected_meal_plan.next.present? %>
+      <%= link_to ">>", pages_home_path(next: true) %>
+    <% end %>
+  </h1>
+  <%= @selected_meal_plan.week_days.first.date %> - <%= @selected_meal_plan.week_days.last.date %>
+</div>
 <div class="">
     <%= link_to "add meal", meals_path %>
     <%= link_to "meal plans", meal_plans_path %>
 </div>
 <hr>
-<br><br>
+<h3>What did you eat today?</h3>
+<div class="row">
+  <%= render 'meal_plans/meals', locals: {meal_plan: @selected_meal_plan}%>
+</div>
+<hr>
 <h3>My Meal Plan</h3>
-<%= link_to "daily" , pages_home_path(daily_view: true) %> |
-<%= link_to "weekly" , pages_home_path(weekly_view: true) %>
-<br>
-<% if @recent_meal_plan.present? %>
+<div class="row">
+  <%= link_to "daily" , pages_home_path(daily_view: true) %> |
+  <%= link_to "weekly" , pages_home_path(weekly_view: true) %>
+  <br>
+  <% if @selected_meal_plan.present? %>
   <% if params[:daily_view].present? %>
-    <%= render 'meal_plans/my_meal_plan', locals: {meal_plan: @week_days} %>
+  <%= render 'meal_plans/my_meal_plan', locals: {meal_plan: @week_days} %>
   <% elsif params[:weekly_view].present? %>
-    <%= render 'meal_plans/my_meal_plan', locals: {meal_plan: @week_days} %>
+  <%= render 'meal_plans/my_meal_plan', locals: {meal_plan: @week_days} %>
   <% end %>
-<% else %>
+  <% else %>
   <%= link_to 'start a meal plan', new_meal_plan_path %>
-<% end %>
+  <% end %>
+</div>
 <hr>
 <br><br>
 <%= render 'user_meals/user_meal_list', locals: {meals: @my_meals}%>

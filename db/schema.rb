@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171014202029) do
+ActiveRecord::Schema.define(version: 20171123180557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20171014202029) do
   create_table "week_day_meals", force: :cascade do |t|
     t.bigint "week_day_id"
     t.bigint "meal_id"
+    t.boolean "eaten"
     t.index ["meal_id"], name: "index_week_day_meals_on_meal_id"
     t.index ["week_day_id"], name: "index_week_day_meals_on_week_day_id"
   end
