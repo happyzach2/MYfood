@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   root to: "pages#index"
   get 'pages/index'
-
   get 'pages/home'
-
   resources :meal_plans do
     get 'shopping_list'
   end
+  resources :shopping_lists
   resources :week_days
   resources :ingredients
   resources :meals

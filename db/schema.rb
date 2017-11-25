@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124155526) do
+ActiveRecord::Schema.define(version: 20171125051552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20171124155526) do
     t.float "amount"
     t.string "amount_type"
     t.index ["meal_id"], name: "index_ingredients_on_meal_id"
+  end
+
+  create_table "list_items", force: :cascade do |t|
+    t.string "item"
+    t.float "amount"
+    t.string "amount_type"
+    t.bigint "shopping_list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shopping_list_id"], name: "index_list_items_on_shopping_list_id"
   end
 
   create_table "meal_plans", force: :cascade do |t|
@@ -45,6 +55,13 @@ ActiveRecord::Schema.define(version: 20171124155526) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_meals_on_user_id"
+  end
+
+  create_table "shopping_lists", force: :cascade do |t|
+    t.bigint "meal_plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_plan_id"], name: "index_shopping_lists_on_meal_plan_id"
   end
 
   create_table "user_meals", force: :cascade do |t|
@@ -92,9 +109,11 @@ ActiveRecord::Schema.define(version: 20171124155526) do
   end
 
   add_foreign_key "ingredients", "meals"
+  add_foreign_key "list_items", "shopping_lists"
   add_foreign_key "meal_plans", "users"
   add_foreign_key "meal_plans", "week_days"
   add_foreign_key "meals", "users"
+  add_foreign_key "shopping_lists", "meal_plans"
   add_foreign_key "user_meals", "meals"
   add_foreign_key "user_meals", "users"
   add_foreign_key "week_day_meals", "meals"
