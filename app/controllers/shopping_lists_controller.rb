@@ -15,6 +15,7 @@ class ShoppingListsController < ApplicationController
   # GET /shopping_lists/new
   def new
     @shopping_list = ShoppingList.new
+    @meal_plan = MealPlan.find(params[:meal_plan])
   end
 
   # GET /shopping_lists/1/edit
@@ -28,6 +29,7 @@ class ShoppingListsController < ApplicationController
 
     respond_to do |format|
       if @shopping_list.save
+        list_creation(@shopping_list)
         format.html { redirect_to @shopping_list, notice: 'Shopping list was successfully created.' }
         format.json { render :show, status: :created, location: @shopping_list }
       else
@@ -71,4 +73,19 @@ class ShoppingListsController < ApplicationController
     def shopping_list_params
       params.require(:shopping_list).permit(:meal_plan_id)
     end
+
+    def list_creation(shopping_list)
+      mp = MealPlan.find(shopping_list.meal_plan.id)
+      puts mp
+      mp.ingredients.each do |ing|
+        holder = shopping_list.list_items.find_by(item: ing.name)
+        if holder.present?
+          amt_total = ing.amount + holder.amount
+          holder.update_attributes(amount: amt_total)
+        else
+          ListItem.create!(shopping_list_id: shopping_list.id, item: ing.name, amount: ing.amount, amount_type: ing.amount_type) unless ing.name == ""
+        end
+      end
+    end
+
 end

@@ -13,7 +13,7 @@
 <div class="">
     <%= link_to "Add Meal", meals_path %> |
     <%= link_to "Meal Plans", meal_plans_path %> |
-    <%= link_to "View Shopping List", meal_plan_shopping_list_path(@selected_meal_plan) %>
+    <%= link_to "View Shopping List", new_shopping_list_path(meal_plan: @selected_meal_plan) %>
 </div>
 <hr>
 <h3>What did you eat today?</h3>

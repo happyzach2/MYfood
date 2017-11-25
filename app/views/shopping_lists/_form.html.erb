@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :meal_plan_id %>
-    <%= form.text_field :meal_plan_id, id: :shopping_list_meal_plan_id %>
+    This will create a shopping list for the following meals <br>
+    <ul>
+      <% @meal_plan.meals.each do |meal| %>
+        <li><%= meal.name %></li>
+      <% end %>
+    </ul>
+    <%= form.hidden_field :meal_plan_id, value: @meal_plan.id %>
   </div>
 
   <div class="actions">
