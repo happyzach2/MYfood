@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   get 'pages/index'
 
   get 'pages/home'
-  
-  resources :meal_plans
+
+  resources :meal_plans do
+    get 'shopping_list'
+  end
   resources :week_days
   resources :ingredients
   resources :meals

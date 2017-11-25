@@ -11,8 +11,9 @@
   <%= @selected_meal_plan.week_days.first.date %> - <%= @selected_meal_plan.week_days.last.date %>
 </div>
 <div class="">
-    <%= link_to "add meal", meals_path %>
-    <%= link_to "meal plans", meal_plans_path %>
+    <%= link_to "Add Meal", meals_path %> |
+    <%= link_to "Meal Plans", meal_plans_path %> |
+    <%= link_to "View Shopping List", meal_plan_shopping_list_path(@selected_meal_plan) %>
 </div>
 <hr>
 <h3>What did you eat today?</h3>

@@ -1,0 +1,4 @@
+This is the shopping list <br>
+<% @meal_plan.meals.select {|x| x.ingredients }.each do |meal| %>
+  <%= meal.name %> <br>
+<% end %>

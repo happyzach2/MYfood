@@ -62,6 +62,10 @@ class MealPlansController < ApplicationController
     end
   end
 
+  def shopping_list
+    @meal_plan = MealPlan.find(params[:meal_plan_id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_meal_plan

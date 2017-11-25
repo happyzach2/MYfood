@@ -24,16 +24,6 @@
   <div class="field">
     <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
-
-  <h3>ingredients</h3>
-  <div id="ingredients">
-    <%= f.fields_for :ingredients do |ing| %>
-    <%= render 'ingredient_fields', f: ing %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'add ingredient', f, :ingredients %>
-    </div>
-  </div>
-
+  
     <%= f.submit %>
 <% end %>
