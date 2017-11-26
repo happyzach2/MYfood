@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     get 'shopping_list'
   end
   resources :shopping_lists
-  resources :week_days
+  resources :week_days do
+    post 'hide_meals' => 'meals#hide_meals', as: :hide_meals
+  end
   resources :ingredients
   resources :meals
   resources :user_meals

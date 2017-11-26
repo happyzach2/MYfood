@@ -1,19 +1,22 @@
 <% @week_days.each do |week_day| %>
-  <%= link_to(week_day_path(week_day)) do %>
+  <%= link_to( week_day_path(week_day), remote: true, class: "week_day_link" ) do %>
     <div class="alert alert-success">
-      <div class="col-md-4">
-        <strong>Date:</strong> <%= week_day.date %>
-      </div>
-      <div class="col-md-6">
-        <strong> | Meals:</strong>
-        <% week_day.meals.each do |meal| %>
+      <div class="row">
+        <div class="col-md-4">
+          <strong>Date:</strong> <%= week_day.date %>
+        </div>
+        <div class="col-md-6">
+          <strong> | Meals:</strong>
+          <% week_day.meals.each do |meal| %>
           <%= meal.name %> ,
-        <% end %>
+          <% end %>
+        </div>
+        <div class="col-md-2">
+          <%= link_to "ADD", pages_home_path(week_day_id: week_day.id) %>
+        </div>
       </div>
-      <div class="col-md-2">
-        <%= link_to "ADD", pages_home_path(week_day_id: week_day.id) %>
+      <div class="row week_day_loader">
       </div>
-      <br>
     </div>
   <% end %>
 <% end %>
