@@ -1,2 +1,2 @@
-$(".week_day_loader").html("<%= j render 'week_days/week_day_meals' %>");
-$(".week_day_loader").slideDown(350);
+$(".week_day_loader_<%= params[:id] %>").slideDown(350);
+$(".week_day_loader_<%= params[:id] %>").html("<%= j render 'week_days/week_day_meals' %>");

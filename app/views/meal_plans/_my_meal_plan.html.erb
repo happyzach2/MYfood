@@ -15,7 +15,7 @@
           <%= link_to "ADD", pages_home_path(week_day_id: week_day.id) %>
         </div>
       </div>
-      <div class="row week_day_loader">
+      <div class="row week_day_loader_<%= week_day.id %>">
       </div>
     </div>
   <% end %>
