@@ -1,6 +1,6 @@
 
 <div class="">
-    <%= link_to "Add Meal", meals_path %> |
+     |
     <%= link_to "Meal Plans", meal_plans_path %> |
     <%# link_to "View Shopping List", new_shopping_list_path(meal_plan: @selected_meal_plan) %>
 </div>
@@ -56,11 +56,17 @@
 <div class="col-md-6">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="text-center">
-        <h3>My Meals</h3>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="text-center col-md-6">
+          <h3>My Meals</h3>
+        </div>
+        <div class="col-md-3 text-right">
+          <%= link_to "Add Meal", meals_path %>
+        </div>
       </div>
     </div>
-    <div class="panel-body">
+    <div class="panel-body form_loader2">
       <%= render 'user_meals/user_meal_list', locals: {meals: @my_meals}%>
     </div>
   </div>
