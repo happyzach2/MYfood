@@ -1,13 +1,19 @@
-daily view <br>
-<%= will_paginate @week_days %><br>
 <% @week_days.each do |week_day| %>
   <%= link_to(week_day_path(week_day)) do %>
     <div class="alert alert-success">
-      <strong>Date:</strong> <%= week_day.date %><br>
-      <strong><u>Meals</u></strong> <br>
-      <% week_day.meals.each do |meal| %>
-      <%= meal.name %><br>
-      <% end %>
+      <div class="col-md-4">
+        <strong>Date:</strong> <%= week_day.date %>
+      </div>
+      <div class="col-md-6">
+        <strong> | Meals:</strong> <br>
+        <% week_day.meals.each do |meal| %>
+          <%= meal.name %> ,
+        <% end %>
+      </div>
+      <div class="col-md-2">
+        <%= link_to "ADD", pages_home_path(week_day: week_day.id) %>
+      </div>
+      <br>
     </div>
   <% end %>
 <% end %>

@@ -3,23 +3,16 @@ class PagesController < ApplicationController
   end
 
   def home
-    @selected_meal_plan = current_user.meal_plans.last
-    if params[:next].present?
-      @selected_meal_plan = @selected_meal_plan.next
-    elsif params[:prev].present?
-      @selected_meal_plan = @selected_meal_plan.previous
-      params[:prev] = false
+    if params[:meal_plan].present?
+      @my_meal_plan = current_user.meal_plans.find(params[:meal_plan])
     else
-      @selected_meal_plan = current_user.meal_plans.last
+      @my_meal_plan = current_user.meal_plans.select {|x| x.start_date <= Date.today }.last
     end
-    if params[:daily_view].present?
-      @week_days = @selected_meal_plan.week_days.paginate(:page => params[:page], :per_page => 1)
-    elsif params[:weekly_view].present?
-      @week_days = @selected_meal_plan.week_days.paginate(:page => params[:page], :per_page => 7)
-    else
-      @recent_meal_plan = current_user.meal_plans.last
+    if @my_meal_plan.present?
+      @week_days = @my_meal_plan.week_days
     end
     @my_meals = current_user.user_meals.all
+    @meal_plan = MealPlan.new
   end
 
 end

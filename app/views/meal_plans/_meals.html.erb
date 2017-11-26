@@ -1,6 +1,6 @@
 <div class="col-md-6 col-xs-6 well">
   <h3 class="text-center"><u>Need To Eat</u></h3>
-  <% @selected_meal_plan.week_day_meals.each do |wdm| %>
+  <% @meal_plan.week_day_meals.each do |wdm| %>
     <% if wdm.eaten != true %>
       <div class="pull-left col-md-12 col-xs-12">
         <%= link_to(edit_week_day_meal_path(wdm, eaten: true)) do %>
@@ -16,7 +16,7 @@
 </div>
 <div class="col-md-6 col-xs-6 well">
   <h3 class="text-center"><u>Eaten</u></h3>
-  <% @selected_meal_plan.week_day_meals.each do |wdm| %>
+  <% @meal_plan.week_day_meals.each do |wdm| %>
     <% if wdm.eaten == true %>
       <div class="pull-right col-md-12 col-xs-12">
         <%= link_to(edit_week_day_meal_path(wdm, eaten: false)) do %>

@@ -1,14 +1,13 @@
-<h3>My Meals</h3>
-<table>
+<table class="table table-striped table-bordered">
   <tr>
     <th>Name</th>
     <th>Type</th>
+    <th></th>
   </tr>
     <% @my_meals.each do |user_meal| %>
       <tr>
         <td><%= user_meal.meal.name %></td>
         <td><%= user_meal.meal.description %></td>
-        <td><%= user_meal.selected %></td>
         <td><%= link_to('add', new_week_day_meal_path(week_day_id: params[:week_day_id], meal_id: user_meal.id )) unless params[:week_day_id].blank? %> </td>
       </tr>
     <% end %>

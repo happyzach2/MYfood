@@ -76,7 +76,6 @@ class ShoppingListsController < ApplicationController
 
     def list_creation(shopping_list)
       mp = MealPlan.find(shopping_list.meal_plan.id)
-      puts mp
       mp.ingredients.each do |ing|
         holder = shopping_list.list_items.find_by(item: ing.name)
         if holder.present?

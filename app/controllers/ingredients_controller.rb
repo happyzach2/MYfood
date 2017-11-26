@@ -27,7 +27,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.new(ingredient_params)
 
     respond_to do |format|
-      if @ingredient.save
+      if @ingredient.save!
         format.html { redirect_to meal_path(@ingredient.meal), notice: 'Ingredient was successfully created.' }
         format.json { render :show, status: :created, location: @ingredient }
       else
@@ -42,7 +42,7 @@ class IngredientsController < ApplicationController
   def update
     respond_to do |format|
       if @ingredient.update(ingredient_params)
-        format.html { redirect_to meal_path(@ingredient.meal), notice: 'Ingredient was successfully updated.' }
+        format.html { redirect_to meal_path(@ingredient.meal.id), notice: 'Ingredient was successfully updated.' }
         format.json { render :show, status: :ok, location: @ingredient }
       else
         format.html { render :edit }

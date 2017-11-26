@@ -29,7 +29,7 @@ class MealPlansController < ApplicationController
     respond_to do |format|
       if @meal_plan.save
         week_day_creation(@meal_plan)
-        format.html { redirect_to @meal_plan, notice: 'Meal plan was successfully created.' }
+        format.html { redirect_to pages_home_path, notice: 'Meal plan was successfully created.' }
         format.json { render :show, status: :created, location: @meal_plan }
       else
         format.html { render :new }

@@ -1,5 +1,31 @@
-<p id="notice"><%= notice %></p>
-
+<div class="text-center">
+  <h1>
+      <%= link_to "<<", @meal_plan.previous if @meal_plan.previous %>
+    Meal Plan
+      <%= link_to ">>", @meal_plan.next if @meal_plan.next %>
+  </h1>
+  <%= @meal_plan.week_days.first.date %> - <%= @meal_plan.week_days.last.date %>
+</div>
+<h3>What did you eat today?</h3>
+<div class="row">
+  <%= render 'meal_plans/meals', locals: {meal_plan: @meal_plan}%>
+</div>
+<hr>
+<h3>My Meal Plan</h3>
+<div class="row">
+  <%= link_to "daily" , pages_home_path(daily_view: true) %> |
+  <%= link_to "weekly" , pages_home_path(weekly_view: true) %>
+  <br>
+  <% if @meal_plan.present? %>
+  <% if params[:daily_view].present? %>
+  <%= render 'meal_plans/my_meal_plan', locals: {meal_plan: @week_days} %>
+  <% elsif params[:weekly_view].present? %>
+  <%= render 'meal_plans/my_meal_plan', locals: {meal_plan: @week_days} %>
+  <% end %>
+  <% else %>
+  <%= link_to 'start a meal plan', new_meal_plan_path %>
+  <% end %>
+</div>
 <p>
   <strong>Budget:</strong>
   <%= @meal_plan.budget %>
